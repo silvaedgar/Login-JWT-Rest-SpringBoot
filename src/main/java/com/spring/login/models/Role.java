@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Setter
 @Getter
@@ -15,7 +16,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 60)
+    @Column(length = 60, unique = true)
+    @NotEmpty(message = "El rol no puede estar vacio")
     private String name;
 
 	public long getId() {
